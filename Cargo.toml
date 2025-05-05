@@ -94,3 +94,6 @@ valuable = [
     "tracing-subscriber/valuable",
 ]
 opentelemetry = ["dep:opentelemetry", "tracing-opentelemetry"]
+
+[lints.rust]
+unexpected_cfgs = { level = "warn", check-cfg = ['cfg(tracing_unstable)'] }
