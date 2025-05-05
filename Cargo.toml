@@ -85,5 +85,12 @@ features = ["trace"]
 version = "0.29.0"
 
 [features]
-valuable = ["dep:valuable", "valuable-serde", "http", "url"]
+valuable = [
+    "dep:valuable",
+    "valuable-serde",
+    "http",
+    "url",
+    "tracing/valuable",
+    "tracing-subscriber/valuable",
+]
 opentelemetry = ["dep:opentelemetry", "tracing-opentelemetry"]
