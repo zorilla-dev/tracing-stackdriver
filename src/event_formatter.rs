@@ -69,6 +69,16 @@ impl EventFormatter {
         map.serialize_entry("time", &time)?;
         map.serialize_entry("target", &meta.target())?;
 
+        if matches!(
+            severity,
+            LogSeverity::Error
+                | LogSeverity::Critical
+                | LogSeverity::Alert
+                | LogSeverity::Emergency
+        ) {
+            map.serialize_entry("@type", "type.googleapis.com/google.devtools.clouderrorreporting.v1beta1.ReportedErrorEvent")?;
+        }
+
         if self.include_source_location {
             if let Some(file) = meta.file() {
                 map.serialize_entry(
